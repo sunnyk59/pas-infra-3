@@ -8,7 +8,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "webpas-terraform-state-cabrini"
+    bucket         = "webpas-terraform-state-cabrini-1"
     key            = "terraform/environments/cabrini/terraform.tfstate"  
     region         = "ap-southeast-2"
     dynamodb_table = "webpas-terraform-state-lock"
