@@ -7,6 +7,7 @@ crash.log
 
 # .terraform directories, which contain provider plugins and modules
 .terraform/
+*.terraform/
 
 # Ignore override files and override directories
 override.tf
@@ -23,3 +24,4 @@ override.tf.json
 
 # Ignore the .terraform.lock.hcl file if it's not used
 .terraform.lock.hcl
+*.terraform.lock.hcl
