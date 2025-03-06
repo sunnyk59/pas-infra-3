@@ -13,5 +13,5 @@ module "namespace" {
   environment    = "prod"
   hospital_name  = "cabrini"
  
-  depends_on = [module.eks]  
+  depends_on = [module.vpc,module.eks]  
 }

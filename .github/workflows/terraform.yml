@@ -1,0 +1,42 @@
+name: "Terraform Pipeline"
+
+on:
+  workflow_dispatch:
+    inputs:
+      hospital_name:
+        description: 'Choose the hospital to deploy'
+        required: true 
+        type: choice
+        options:
+          - cabrini
+          - stvincent
+      environment:
+        description: 'Select the environment to deploy (prod, staging)'
+        required: true 
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  terraform:
+    name: "Terraform Plan & Apply for ${{ github.event.inputs.hospital_name }} in ${{ github.event.inputs.environment }}"
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Terraform
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.10.0
+
+      # Step 3: Configure Terraform working directory based on inputs
+      - name: Navigate to correct directory
+        run: |
+          cd ${{ github.event.inputs.environment }}/${{ github.event.inputs.hospital_name }}
+          echo "Current directory: $(pwd)"
+  
