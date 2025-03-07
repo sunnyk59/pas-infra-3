@@ -1,17 +1,11 @@
 
-module "vpc" {
-  source = "../../modules/vpc"
-}
 
 module "eks" {
-  source = "../../modules/eks"
+  source          = "../../modules/eks"
+  namespace_name  = "cabrini-namespace"  # Pass the namespace name here
+  environment_name = "staging" 
 }
 
-module "namespace" {
-  source         = "../../modules/namespace"
-  namespace_name = "cabrini-namespace"
-  environment    = "prod"
-  hospital_name  = "cabrini"
- 
-  depends_on = [module.vpc,module.eks]  
-}
+
+
+

@@ -6,6 +6,7 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 4.41.0" 
     }
+    
   }
   backend "s3" {
     bucket         = "webpas-terraform-state-cabrini-1"
